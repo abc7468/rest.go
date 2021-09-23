@@ -1,6 +1,8 @@
 package creditcard
 
 import (
+	"log"
+
 	db "github.com/abc7468/rest.go/DB"
 	"gorm.io/gorm"
 )
@@ -8,11 +10,16 @@ import (
 type CreditCard struct {
 	gorm.Model
 	Id   int
-	name string
+	Name string
 }
 
-func makeCreditCard() {
-	db := db.DB()
+func MakeCreditCard(id int, name string) error {
+	db, err := db.DB()
+	if err != nil {
+		log.Print(err)
+		return err
+	}
 	db.AutoMigrate(&CreditCard{})
-	db.Create(&CreditCard{Id: 2, name: "royJang"})
+	db.Create(&CreditCard{Id: id, Name: name})
+	return nil
 }
