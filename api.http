@@ -1,0 +1,7 @@
+http://localhost:3000/user
+
+{
+    "first_name" : "jang",
+    "last_name" : "roy",
+    "email" : "abc"
+}
